@@ -327,6 +327,9 @@ p { margin: 0 0 1em; }
   overflow: hidden;
   color: var(--white);
 }
+@media (orientation: portrait) {
+  .hero { min-height: 78vh; }
+}
 .hero-img {
   position: absolute;
   inset: 0;
@@ -339,7 +342,7 @@ p { margin: 0 0 1em; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(20,24,20,0.55) 0%, rgba(20,24,20,0.32) 22%, rgba(20,24,20,0.4) 55%, rgba(20,24,20,0.7) 100%);
+    linear-gradient(180deg, rgba(28,32,28,0.35) 0%, rgba(28,32,28,0.35) 30%, rgba(28,32,28,0.94) 78%, rgba(28,32,28,0.97) 100%);
 }
 .hero-content {
   position: relative;
@@ -357,7 +360,7 @@ p { margin: 0 0 1em; }
   line-height: 1;
   background: var(--yellow);
   color: var(--ink);
-  padding: 0.22em 0.2em 0.1em;
+  padding: 0.14em 0.15em;
   text-shadow: none;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
