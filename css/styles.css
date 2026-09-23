@@ -155,7 +155,10 @@ p { margin: 0 0 1em; }
   background: currentColor;
   flex-shrink: 0;
 }
-.eyebrow-light { color: var(--teal-tint); }
+.eyebrow-light {
+  color: var(--white);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+}
 .eyebrow-accent { color: var(--yellow); }
 
 /* ===========================================================
@@ -336,7 +339,7 @@ p { margin: 0 0 1em; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(28,32,28,0.35) 0%, rgba(28,32,28,0.35) 30%, rgba(28,32,28,0.94) 78%, rgba(28,32,28,0.97) 100%);
+    linear-gradient(180deg, rgba(20,24,20,0.55) 0%, rgba(20,24,20,0.32) 22%, rgba(20,24,20,0.4) 55%, rgba(20,24,20,0.7) 100%);
 }
 .hero-content {
   position: relative;
@@ -346,13 +349,15 @@ p { margin: 0 0 1em; }
 }
 .hero h1 {
   color: var(--white);
-  text-shadow: 0 2px 18px rgba(0,0,0,0.35);
+  line-height: 1.15;
+  text-shadow: 0 2px 18px rgba(0,0,0,0.45);
 }
 .accent-block {
   display: inline;
+  line-height: 1;
   background: var(--yellow);
   color: var(--ink);
-  padding: 0 0.2em;
+  padding: 0.22em 0.2em 0.1em;
   text-shadow: none;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
@@ -361,13 +366,21 @@ p { margin: 0 0 1em; }
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   font-weight: 500;
   color: var(--white);
+  text-shadow: 0 1px 10px rgba(0,0,0,0.45);
 }
-.hero .body-light { color: #E7E9E1; }
+.hero .body-light {
+  color: #E7E9E1;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.45);
+}
 
 /* ===========================================================
    Patron benefits grid
    =========================================================== */
-.benefits-heading { text-align: center; margin-top: 3em; }
+.benefits-heading {
+  text-align: center;
+  margin-top: 3em;
+  font-size: clamp(2rem, 4.6vw, 3rem);
+}
 .benefits-intro, .benefits-footer {
   max-width: 760px;
   margin-left: auto;
