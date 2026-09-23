@@ -1,4 +1,43 @@
 /* ===========================================================
+   Brand fonts (self-hosted, from client-supplied brand kit)
+   =========================================================== */
+@font-face {
+  font-family: 'Abolition';
+  src: url('../fonts/Abolition-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../fonts/AvenirNext-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../fonts/AvenirNext-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../fonts/AvenirNext-Demi.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../fonts/AvenirNext-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===========================================================
    Chico State CIM — brand tokens
    =========================================================== */
 :root {
@@ -16,8 +55,8 @@
   --green:      #127A3A;
   --orange:     #FF6A3F;
 
-  --font-display: 'Bebas Neue', 'Oswald', sans-serif;
-  --font-body: 'Poppins', 'Avenir Next', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Abolition', 'Bebas Neue', 'Oswald', sans-serif;
+  --font-body: 'Avenir Next', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --max-width: 1180px;
   --radius: 6px;
@@ -66,9 +105,9 @@ h1, h2, h3 {
   margin: 0 0 0.5em;
   color: var(--charcoal);
 }
-h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
-h2 { font-size: clamp(1.9rem, 4.2vw, 2.8rem); }
-h3 { font-size: clamp(1.3rem, 2.6vw, 1.6rem); margin-top: 1.5em; }
+h1 { font-size: clamp(3rem, 7.5vw, 5.5rem); }
+h2 { font-size: clamp(2.3rem, 5.5vw, 3.6rem); }
+h3 { font-size: clamp(1.5rem, 3.2vw, 2rem); margin-top: 1.5em; }
 p { margin: 0 0 1em; }
 .wrap {
   max-width: var(--max-width);
@@ -97,12 +136,24 @@ p { margin: 0 0 1em; }
    Eyebrow / labels
    =========================================================== */
 .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   font-family: var(--font-display);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--teal);
   font-size: 0.95rem;
   margin-bottom: 0.5em;
+}
+.center .eyebrow { justify-content: center; }
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 3px;
+  background: currentColor;
+  flex-shrink: 0;
 }
 .eyebrow-light { color: var(--teal-tint); }
 .eyebrow-accent { color: var(--yellow); }
@@ -209,6 +260,20 @@ p { margin: 0 0 1em; }
 }
 
 /* ===========================================================
+   Color stripe — brand accent bar
+   =========================================================== */
+.color-stripe {
+  display: flex;
+  height: 7px;
+}
+.color-stripe span { flex: 1; }
+.color-stripe span:nth-child(1) { background: var(--teal); }
+.color-stripe span:nth-child(2) { background: var(--yellow); }
+.color-stripe span:nth-child(3) { background: var(--green); }
+.color-stripe span:nth-child(4) { background: var(--orange); }
+.color-stripe span:nth-child(5) { background: var(--teal-dark); }
+
+/* ===========================================================
    Sections — shared
    =========================================================== */
 .section {
@@ -265,7 +330,7 @@ p { margin: 0 0 1em; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 65%;
+  object-position: center center;
 }
 .hero-scrim {
   position: absolute;
@@ -282,6 +347,15 @@ p { margin: 0 0 1em; }
 .hero h1 {
   color: var(--white);
   text-shadow: 0 2px 18px rgba(0,0,0,0.35);
+}
+.accent-block {
+  display: inline;
+  background: var(--yellow);
+  color: var(--ink);
+  padding: 0 0.2em;
+  text-shadow: none;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 .hero .lede {
   font-size: clamp(1.1rem, 2vw, 1.35rem);
@@ -308,25 +382,48 @@ p { margin: 0 0 1em; }
   margin: var(--space-8) 0;
 }
 .benefit-card {
-  background: var(--mist);
+  background: var(--white);
   border-radius: var(--radius);
+  border-top: 5px solid var(--card-accent, var(--teal));
+  box-shadow: 0 4px 16px rgba(47, 47, 35, 0.08);
   padding: var(--card-py) var(--card-px);
   text-align: center;
   flex: 1 1 220px;
   max-width: 260px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.benefit-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(47, 47, 35, 0.14);
 }
 .benefit-card p {
   margin: 0;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--charcoal);
+}
+.benefit-card:nth-child(5n+1) { --card-accent: var(--teal); }
+.benefit-card:nth-child(5n+2) { --card-accent: var(--orange); }
+.benefit-card:nth-child(5n+3) { --card-accent: var(--green); }
+.benefit-card:nth-child(5n+4) { --card-accent: var(--yellow); }
+.benefit-card:nth-child(5n+5) { --card-accent: var(--teal-dark); }
+
+.benefit-icon-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--card-accent, var(--teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-4);
 }
 .benefit-icon {
   display: block;
-  width: 44px;
-  height: 44px;
-  margin: 0 auto var(--space-4);
-  color: var(--teal);
+  width: 32px;
+  height: 32px;
+  color: var(--white);
 }
+.benefit-card:nth-child(5n+4) .benefit-icon { color: var(--ink); }
 
 /* ===========================================================
    Scholarship feature
@@ -344,7 +441,7 @@ p { margin: 0 0 1em; }
 }
 .stat-callout {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-size: clamp(3.5rem, 9vw, 6.5rem);
   color: var(--yellow);
   line-height: 1;
   margin: 0.25em 0;
@@ -424,11 +521,6 @@ p { margin: 0 0 1em; }
   background: rgba(0, 100, 117, 0.88);
 }
 .final-content { position: relative; z-index: 1; }
-.final-logo {
-  height: 56px;
-  width: auto;
-  margin: 0 auto var(--space-7);
-}
 .section-final h2 { color: var(--white); }
 .section-final p { color: #EAF3F4; }
 
@@ -448,7 +540,7 @@ p { margin: 0 0 1em; }
   text-align: center;
 }
 .footer-logo {
-  height: 28px;
+  height: 56px;
   width: auto;
   filter: grayscale(1) brightness(2);
   opacity: 0.85;
